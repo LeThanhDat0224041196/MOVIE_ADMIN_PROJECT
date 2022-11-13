@@ -33,7 +33,7 @@ export default function Login() {
                   <img width='30' src='https://1000logos.net/wp-content/uploads/2021/04/Facebook-logo.png' /> Facebook Login
                 </a>
                 <a href='#'>
-                  <img width='30' src='https://banner2.cleanpng.com/20180612/llj/kisspng-google-logo-google-search-google-doodle-circular-economy-5b2082fe438318.3928951115288573422766.jpg' /> Google Login
+                  <img width='30' src='https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png' /> Google Login
                 </a>
           </div>
         </form>

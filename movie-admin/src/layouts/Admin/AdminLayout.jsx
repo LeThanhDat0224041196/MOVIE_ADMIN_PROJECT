@@ -2,8 +2,9 @@ import React from 'react'
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import './Admin.scss'
-import {Outlet} from 'react-router-dom'
+import {Outlet, useNavigate} from 'react-router-dom'
 export default function AdminLayout() {
+  const navigate = useNavigate();
   const { Header, Content, Footer, Sider } = Layout;
   return (
     <Layout
@@ -24,14 +25,21 @@ export default function AdminLayout() {
       <Menu
         theme="dark"
         mode="inline"
-        defaultSelectedKeys={['4']}
-        items={[UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
-          (icon, index) => ({
-            key: String(index + 1),
-            icon: React.createElement(icon),
-            label: `nav ${index + 1}`,
-          }),
-        )}
+        defaultSelectedKeys={['1']}
+        items={[
+          {
+            key: '1',
+            icon: <UserOutlined />,
+            label: 'User Management',
+            onClick: ()=>{navigate('/admin/UserManagement')}
+          },
+          {
+            key: '2',
+            icon: <VideoCameraOutlined />,
+            label: 'Flim Management',
+            onClick: ()=>{navigate('/admin/FilmManagement')}
+          },
+        ]}
       />
     </Sider>
     <Layout>

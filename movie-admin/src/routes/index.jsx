@@ -1,5 +1,9 @@
 import React, { lazy } from 'react'
 import {useRoutes} from 'react-router-dom'
+import FilmManagement from '../pages/FilmManagement/FilmManagement';
+
+
+import UserManagement from '../pages/UserManagement/UserManagement';
 
 const LoginLayout = lazy(()=> import('../layouts/Login/LoginLayout'));
 const AdminLayout = lazy(()=> import('../layouts/Admin/AdminLayout'))
@@ -21,7 +25,16 @@ export default function Router() {
                 {
                     path: '/admin/',
                     element: <AdminGuards />,
-                    children: [],
+                    children: [
+                        {
+                            path:'/admin/UserManagement',
+                            element: <UserManagement />
+                        },
+                        {
+                            path: '/admin/FilmManagement',
+                            element: <FilmManagement />
+                        }
+                    ],
                 }
             ]
         }
