@@ -1,5 +1,5 @@
 import axios from "axios";
-import { USER_INFO_KEY, TOKEN_CYBERSOFT, BASE_URL} from "../constants/common,js";
+import { USER_INFO_KEY, TOKEN_CYBERSOFT, BASE_URL} from "../constants/common.js";
 
 
 export const request = axios.create({

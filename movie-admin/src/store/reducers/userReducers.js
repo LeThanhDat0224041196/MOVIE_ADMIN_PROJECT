@@ -7,7 +7,9 @@ if(userAccount){
 }
 
 const DEFAULT_STATE = {
-    userAccount: userAccount
+    userAccount: userAccount,
+    userListInfo: [],
+    userTakeInfo: []
 };
 
 export const userReducer = (state = DEFAULT_STATE, {type, payload})=>{
