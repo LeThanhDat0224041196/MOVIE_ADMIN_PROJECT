@@ -8,10 +8,10 @@ export default function AdminGuards() {
   const userState = useSelector((state)=> state.userReducer);
   const navigate = useNavigate();
   useEffect(()=>{
-    if(!userState.userInfo){
+    if(!userState.userAccount){
       return navigate('/');
     }
-    if(userState.userInfo && userState.userInfo.maLoaiNguoiDung !== MaLoaiNguoiDung.QuanTri){
+    if(userState.userAccount && userState.userAccount.maLoaiNguoiDung !== MaLoaiNguoiDung.QuanTri){
       notification.warning({
         message: "Not an Admin account, you can't access the Admin page !!!"
       });

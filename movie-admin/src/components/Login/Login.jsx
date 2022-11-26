@@ -1,8 +1,47 @@
-import React from 'react'
+import { message, notification } from 'antd';
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
+import { fetchLoginUserAPI } from '../../service/User/user';
+import { setAccountUser } from '../../store/actions/userAction';
+import { USER_ACCOUNT_KEY } from '../../store/types/type';
 import './Login.scss'
 
 
 export default function Login() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [user, setUser] = useState({
+    taiKhoan: '',
+    matKhau: '',
+  });
+  const handleChange = (event) => {
+    const {name, value} = event.target;
+    setUser({
+      ...user,
+      [name]: value,
+    })
+  };
+  const handleSubmit = async (event)=>{
+    event.preventDefault();
+    try {
+      const result = await fetchLoginUserAPI(user);
+      localStorage.setItem(USER_ACCOUNT_KEY, JSON.stringify(result.data.content))
+      dispatch(setAccountUser(result.data.content))
+      notification.success({
+        message: 'Tài Khoản đăng nhập thành công',
+      })
+      setTimeout(()=>{
+        window.location.href='/admin'
+        // navigate('/admin')
+      }, 1000)
+    } catch (error) {
+      notification.warning({
+        message: 'Email hoặc mật khẩu không đúng !'
+      })
+    }
+  }
+
   return (
     <div className='container'>
       <div className='login-left'>
@@ -10,15 +49,15 @@ export default function Login() {
           <h1>Welcome to Login Page</h1>
           <p>Please login to access Admin Page</p>
         </div>
-        <form className='login-form'>
+        <form className='login-form' onSubmit={handleSubmit}>
           <div className='login-form-content'>
             <div className='form-item'>
-              <label htmlFor="email">Enter Email</label>
-              <input type="text" id='email' />
+              <label htmlFor="user">Enter Username</label>
+              <input name='taiKhoan' type="text" id='user' onChange={handleChange} />
             </div>
             <div className="form-item">
               <label htmlFor="password">Enter Password</label>
-              <input type="password" id='password' />
+              <input name='matKhau' type="password" id='password' onChange={handleChange} />
             </div>
             <div className="form-item">
               <div className='checkbox'>
