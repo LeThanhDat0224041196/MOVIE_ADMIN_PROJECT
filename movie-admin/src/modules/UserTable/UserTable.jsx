@@ -1,4 +1,4 @@
-import { Table, Input, Button, Space, Modal, Form, Radio, Select, Option} from "antd";
+import { Table, Input, Button, Space, Modal, Form, Radio, Select} from "antd";
 import React, { useEffect, useState } from "react";
 import { PlusOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
@@ -179,8 +179,10 @@ export default function UserTable() {
             </Form.Item>
             <Form.Item label="Loại người dùng">
               <Select placeholder='Chọn loại người dùng'>
-                <Option value="QuanTri">Quản Trị</Option>
-                <Option value="KhachHang">Khách Hàng</Option>
+                {/* <Option value="QuanTri">Quản Trị</Option>
+                <Option value="KhachHang">Khách Hàng</Option> */}
+                <Select.Option value="QuanTri">Quản Trị</Select.Option>
+                <Select.Option value="KhachHang">Khách Hàng</Select.Option>
               </Select>
             </Form.Item>
             {/* <Form.Item {...tailFormItemLayout} label="Button">
