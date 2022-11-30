@@ -15,7 +15,7 @@ import "./Admin.scss";
 
 export default function AdminLayout() {
   const navigate = useNavigate();
-  const [collapsed, setCollapsed] = useState(false);
+  // const [collapsed, setCollapsed] = useState(false);
   const { Header, Sider, Content, Footer } = Layout;
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.userReducer);
@@ -27,7 +27,7 @@ export default function AdminLayout() {
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider
-        breakpoint="lg"
+        breakpoint="xxl"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
           console.log(broken);
@@ -35,9 +35,6 @@ export default function AdminLayout() {
         onCollapse={(collapsed, type) => {
           console.log(collapsed, type);
         }}
-        trigger={null}
-        collapsible
-        collapsed={collapsed}
       >
         <div className="logo" />
         <Menu
@@ -71,17 +68,10 @@ export default function AdminLayout() {
             padding: 0,
           }}
         >
-          {React.createElement(
-            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-            {
-              className: "trigger",
-              onClick: () => setCollapsed(!collapsed),
-            }
-          )}
           <>
             {userState.userAccount ? (
               <span className="flex items-center ml-auto mr-3">
-                Hello ! {""}
+                Hello {userState.userAccount.taiKhoan} !
                 <span className="ml-2 flex">
                   <Avatar
                     className="uppercase"

@@ -7,9 +7,50 @@ const fetchLoginUserAPI = (data)=>{
         method: 'POST',
         data: data,
     })
-}
-
+};
+const fetchTakeListUserAPI = (tuKhoa = "") => {
+    return request({
+      url:
+        tuKhoa !== ""
+          ? `/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=${GROUP_ID}&tuKhoa=${tuKhoa}`
+          : `/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUP_ID}`,
+      method: "GET",
+    });
+  };
+const fetchAddUserAPI = (data) => {
+    return request({
+      url: `/QuanLyNguoiDung/ThemNguoiDung`,
+      method: "POST",
+      data: data,
+    });
+};
+const fetchTakeInfoUserAPI = (taiKhoan) => {
+    return request({
+      url: `/QuanLyNguoiDung/LayThongTinNguoiDung?taiKhoan=${taiKhoan}`,
+      method: "POST",
+    });
+  };
+  
+  const fetchUpdateInfoUserAPI = (data) => {
+    return request({
+      url: `/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+      method: "POST",
+      data: data,
+    });
+  };
+  
+  const fetchDeleteUserAPI = (taiKhoan) => {
+    return request({
+      url: `/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+      method: "DELETE",
+    });
+  };
 
 export {
-    fetchLoginUserAPI
+    fetchLoginUserAPI, 
+    fetchAddUserAPI, 
+    fetchDeleteUserAPI, 
+    fetchUpdateInfoUserAPI,
+    fetchTakeListUserAPI, 
+    fetchTakeInfoUserAPI 
 }

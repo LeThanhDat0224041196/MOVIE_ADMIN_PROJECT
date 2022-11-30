@@ -11,6 +11,8 @@ const AdminLayout = lazy(()=> import('../layouts/Admin/AdminLayout'))
 const NoAuthGuards = lazy(()=> import('../guards/NoAuthGuards/NoAuthGuards'));
 const AdminGuards = lazy(()=> import('../guards/AdminGuards/AdminGuards'))
 
+const EditUserManagement = lazy(()=> import('../pages/EditUserManagement/EditUserManagement'))
+const EditMovieManagement = lazy(()=> import('../pages/EditMoiveManagement/EditMovieManagement'))
 
 export default function Router() {
     const routing = useRoutes([
@@ -31,9 +33,17 @@ export default function Router() {
                             element: <UserManagement />
                         },
                         {
+                            path: '/admin/UserManagement/:taiKhoan/edit',
+                            element: <EditUserManagement />,
+                        },
+                        {
                             path: '/admin/FilmManagement',
                             element: <FilmManagement />
-                        }
+                        },
+                        {
+                            path: '/admin/FilmManagement/:movieid/edit',
+                            element: <EditMovieManagement />,
+                        },
                     ],
                 }
             ]

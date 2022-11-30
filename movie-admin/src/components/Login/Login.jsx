@@ -32,7 +32,7 @@ export default function Login() {
         message: 'Tài Khoản đăng nhập thành công',
       })
       setTimeout(()=>{
-        window.location.href='/admin'
+        window.location.href='/admin/UserManagement'
         // navigate('/admin')
       }, 1000)
     } catch (error) {

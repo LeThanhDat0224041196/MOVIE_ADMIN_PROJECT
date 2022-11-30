@@ -1,4 +1,5 @@
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, compose, createStore } from "redux";
+import thunk from "redux-thunk";
 import { filmReducer } from "./reducers/filmReducers";
 import { userReducer } from "./reducers/userReducers";
 
@@ -7,7 +8,8 @@ const rootReducer = combineReducers({
     filmReducer: filmReducer,
 });
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const store = createStore(
     rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+   composeEnhancers(applyMiddleware(thunk))
 )
